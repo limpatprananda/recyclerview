@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_item.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,8 +72,9 @@ class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private var mYearView: TextView? = null
 
     init {
-        mTitleView = itemView.findViewById(R.id.list_title)
-        mYearView = itemView.findViewById(R.id.list_description)
+        mTitleView = itemView.list_title
+        mYearView = itemView.list_description
+
     }
 
     fun bind(movie: Movie){
