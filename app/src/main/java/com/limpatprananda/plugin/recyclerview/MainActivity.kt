@@ -18,49 +18,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val mNicolasCageMovies = listOf(
-        Movie("Raising Arizona", 1987),
-        Movie("Vampire's Kiss", 1988),
-        Movie("Con Air", 1997),
-        Movie("Gone in 60 Seconds", 1997),
-        Movie("National Treasure", 2004),
-        Movie("The Wicker Man", 2006),
-        Movie("Ghost Rider", 2007),
-        Movie("Knowing", 2009),
-
-        Movie("Vampire's Kiss", 1988),
-        Movie("Con Air", 1997),
-        Movie("Gone in 60 Seconds", 1997),
-        Movie("National Treasure", 2004),
-        Movie("The Wicker Man", 2006),
-        Movie("Ghost Rider", 2007),
-
-        Movie("Vampire's Kiss", 1988),
-        Movie("Con Air", 1997),
-        Movie("Gone in 60 Seconds", 1997),
-        Movie("National Treasure", 2004),
-        Movie("The Wicker Man", 2006),
-        Movie("Ghost Rider", 2007),
-
-        Movie("Vampire's Kiss", 1988),
-        Movie("Con Air", 1997),
-        Movie("Gone in 60 Seconds", 1997),
-        Movie("National Treasure", 2004),
-        Movie("The Wicker Man", 2006),
-        Movie("Ghost Rider", 2007)
-
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
             R.layout.activity_main)
 
+        val listAdapter = ListMovieAdapter()
         binding.listRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = ListAdapter(mNicolasCageMovies)
+            adapter = listAdapter
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
+        listAdapter.submitList(Movie.listMovies)
     }
 }
 
