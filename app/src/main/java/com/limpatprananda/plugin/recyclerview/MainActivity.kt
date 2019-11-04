@@ -68,18 +68,9 @@ data class Movie(
 class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item, parent, false)){
 
-    private var mTitleView: TextView? = null
-    private var mYearView: TextView? = null
-
-    init {
-        mTitleView = itemView.list_title
-        mYearView = itemView.list_description
-
-    }
-
     fun bind(movie: Movie){
-        mTitleView?.text = movie.title
-        mYearView?.text = movie.year.toString()
+        itemView.list_title.text = movie.title
+        itemView.list_description.text = movie.year.toString()
     }
 }
 
@@ -93,9 +84,7 @@ class ListAdapter(private val list: List<Movie>) :
         return MovieViewHolder(inflater, parent)
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    override fun getItemCount() = list.size
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = list.get(position)
