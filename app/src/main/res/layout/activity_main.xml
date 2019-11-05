@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="factory"
-            type="com.limpatprananda.plugin.recyclerview.Movie.Factory" />
+            name="viewModel"
+            type="com.limpatprananda.plugin.recyclerview.FakeMovieViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/list_item"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:listData="@{factory.listMovies}"/>
+            app:listData="@{viewModel.listMovies}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

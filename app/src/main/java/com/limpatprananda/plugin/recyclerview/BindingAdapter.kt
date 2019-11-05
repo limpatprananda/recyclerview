@@ -11,7 +11,6 @@ import com.limpatprananda.plugin.recyclerview.databinding.ListItemBinding
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?){
-    println("Log: " + data.toString())
     val adapter = recyclerView.adapter as ListMovieAdapter
     adapter.submitList(data)
 }
@@ -28,8 +27,6 @@ class ListMovieAdapter() : ListAdapter<Movie, ListMovieAdapter.MovieViewHolder>(
         }
     }
 
-
-    private lateinit var parentContext: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = ListItemBinding.inflate(inflater)
@@ -50,41 +47,3 @@ class ListMovieAdapter() : ListAdapter<Movie, ListMovieAdapter.MovieViewHolder>(
     }
 }
 
-data class Movie(
-    val title: String,
-    val year: Int
-){
-    companion object Factory{
-        val listMovies = listOf(
-            Movie("Raising Arizona", 1987),
-            Movie("Vampire's Kiss", 1988),
-            Movie("Con Air", 1997),
-            Movie("Gone in 60 Seconds", 1997),
-            Movie("National Treasure", 2004),
-            Movie("The Wicker Man", 2006),
-            Movie("Ghost Rider", 2007),
-            Movie("Knowing", 2009),
-
-            Movie("Vampire's Kiss", 1988),
-            Movie("Con Air", 1997),
-            Movie("Gone in 60 Seconds", 1997),
-            Movie("National Treasure", 2004),
-            Movie("The Wicker Man", 2006),
-            Movie("Ghost Rider", 2007),
-
-            Movie("Vampire's Kiss", 1988),
-            Movie("Con Air", 1997),
-            Movie("Gone in 60 Seconds", 1997),
-            Movie("National Treasure", 2004),
-            Movie("The Wicker Man", 2006),
-            Movie("Ghost Rider", 2007),
-
-            Movie("Vampire's Kiss", 1988),
-            Movie("Con Air", 1997),
-            Movie("Gone in 60 Seconds", 1997),
-            Movie("National Treasure", 2004),
-            Movie("The Wicker Man", 2006),
-            Movie("Ghost Rider", 2007)
-        )
-    }
-}
