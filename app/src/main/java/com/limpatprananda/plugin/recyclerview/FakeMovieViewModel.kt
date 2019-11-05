@@ -46,4 +46,8 @@ class FakeMovieViewModel {
         isClicked = !isClicked
         println("log: isClicked = " + isClicked)
     }
+
+    fun showToast(movie: Movie){
+        println("log: movie = " + movie.toString())
+    }
 }

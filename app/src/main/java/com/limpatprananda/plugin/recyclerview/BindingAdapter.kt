@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.limpatprananda.plugin.recyclerview.databinding.ListItemBinding
 
+
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Movie>?){
     val adapter = recyclerView.adapter as ListMovieAdapter
     adapter.submitList(data)
 }
 
-class ListMovieAdapter() : ListAdapter<Movie, ListMovieAdapter.MovieViewHolder>(DiffCallback)
+class ListMovieAdapter(private val onClickListener: OnClickListener) : ListAdapter<Movie, ListMovieAdapter.MovieViewHolder>(DiffCallback)
 {
     companion object DiffCallback : DiffUtil.ItemCallback<Movie>(){
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -35,15 +36,22 @@ class ListMovieAdapter() : ListAdapter<Movie, ListMovieAdapter.MovieViewHolder>(
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(getItem(position))
+        }
     }
 
-    inner class MovieViewHolder(private val binding: ListItemBinding) :
+    class MovieViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root){
 
         fun bind(movie: Movie){
             binding.movie = movie
             binding.executePendingBindings()
         }
+    }
+
+    class OnClickListener(val clickListener: (movie: Movie) -> Unit){
+        fun onClick(movie: Movie) = clickListener(movie)
     }
 }
 

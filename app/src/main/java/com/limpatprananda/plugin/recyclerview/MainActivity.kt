@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
 
         binding.listRecyclerView.apply {
-            adapter = ListMovieAdapter()
+            adapter = ListMovieAdapter(ListMovieAdapter.OnClickListener{
+                viewModel.showToast(it)
+            })
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
     }
