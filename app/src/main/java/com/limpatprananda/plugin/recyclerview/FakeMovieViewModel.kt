@@ -39,4 +39,11 @@ class FakeMovieViewModel {
         Movie("The Wicker Man", 2006),
         Movie("Ghost Rider", 2007)
     )
+
+    var isClicked = false
+
+    fun clicked(){
+        isClicked = !isClicked
+        println("log: isClicked = " + isClicked)
+    }
 }
