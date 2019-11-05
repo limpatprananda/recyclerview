@@ -10,6 +10,7 @@ import android.widget.ListAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,12 +24,14 @@ class MainActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,
             R.layout.activity_main)
 
-        val listAdapter = ListMovieAdapter()
+        val viewModel = ViewModelProviders.of(this,
+            MovieViewModel.Factory()).get(MovieViewModel::class.java)
+        binding.viewModel = viewModel
+
         binding.listRecyclerView.apply {
-            adapter = listAdapter
+            adapter = ListMovieAdapter()
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
-        listAdapter.submitList(Movie.listMovies)
     }
 }
 
